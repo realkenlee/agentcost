@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agentcost"
+version = "0.1.0"
+description = "Token attribution for AI agents — know who spent what and why"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+proxy = ["fastapi>=0.115", "uvicorn", "httpx"]
+report = []
+
+[project.scripts]
+agentcost = "agentcost.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["agentcost"]
