@@ -1,0 +1,24 @@
+{
+  "name": "agentcost",
+  "version": "0.1.0",
+  "description": "Token attribution for AI agents — know who spent what and why",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "peerDependencies": {
+    "@anthropic-ai/sdk": ">=0.20",
+    "openai": ">=4.0",
+    "ai": ">=3.0"
+  },
+  "peerDependenciesOptional": {
+    "@anthropic-ai/sdk": true,
+    "openai": true,
+    "ai": true
+  },
+  "devDependencies": {
+    "typescript": "^5.0"
+  }
+}

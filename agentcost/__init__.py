@@ -18,6 +18,8 @@ def init(log_path: Path | None = None) -> None:
     from . import _log, _patch
     _log.setup(log_path)
 
+    from . import _langchain, _llamaindex
+
     patched = []
     if _patch.patch_anthropic():
         patched.append("anthropic")
@@ -25,8 +27,12 @@ def init(log_path: Path | None = None) -> None:
         patched.append("openai")
     if _patch.patch_litellm():
         patched.append("litellm")
+    if _langchain.patch_langchain():
+        patched.append("langchain/crewai")
+    if _llamaindex.patch_llamaindex():
+        patched.append("llamaindex")
 
     if patched:
         print(f"[agentcost] tracking: {', '.join(patched)}")
     else:
-        print("[agentcost] no supported LLM client found — install anthropic, openai, or litellm")
+        print("[agentcost] no supported LLM client found — install anthropic, openai, litellm, langchain, or llama-index")
